@@ -64,6 +64,7 @@ if __name__ == '__main__':
         sorted_photos = sorted(photos, key=operator.itemgetter('height', 'width'), reverse=True)
 
         ya_disk = yadisk_api.YaDisk(yad_token)
+        max_number_of_photos = min(max_number_of_photos, len(sorted_photos))
         load_photos_on_yadisk(ya_disk, vk_screen_name, sorted_photos[:max_number_of_photos])
 
 
