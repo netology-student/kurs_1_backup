@@ -43,13 +43,14 @@ class YaDisk:
         params = {'path': folder_name}
 
         resp = requests.put(url, params=params, headers=headers)
-        if resp.status_code != 200:
+        if resp.status_code != 201:
             if resp.status_code == 409:
                 if resp.json()['error'] == 'DiskPathPointsToExistentDirectoryError':
                     # Каталог был создан ранее, не считаем ошибкой
                     return True
             else:
                 pprint(resp.text)
+                return False
         else:
             return True
 

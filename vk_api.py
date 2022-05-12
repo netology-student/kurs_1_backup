@@ -49,7 +49,7 @@ class ProfileReader:
                     info = {'date': photo['date'], 'id': photo['id'], 'post_id': photo['post_id'],
                             'url': bigest_photo['url'], 'height': bigest_photo['height'], 'width': bigest_photo['width']}
                     likes_count = self.likes_count(owner_id, info['id'])
-                    if likes_count == None:
+                    if likes_count is None:
                         return None
                     info['likes_count'] = likes_count
                     photos.append(info)
